@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { RouteComponentProps } from 'react-router-dom';
 import Moment from 'react-moment';
 import { gql, useQuery } from '@apollo/client';
 
 import Loader from '../layouts/Loader';
 
-interface Props {
-  category: string;
-}
+interface Props extends RouteComponentProps<{ category: string }> {}
 
 const GET_RANDOM_JOKE = gql`
   query($category: String!) {
@@ -22,8 +21,8 @@ const GET_RANDOM_JOKE = gql`
   }
 `;
 
-const Joke: React.FC<Props> = (props: any) => {
-  const { category } = props.match.params;
+const Joke: React.FC<Props> = ({ match }) => {
+  const { category } = match.params;
 
   const { loading, data } = useQuery(GET_RANDOM_JOKE, {
     variables: { category },
