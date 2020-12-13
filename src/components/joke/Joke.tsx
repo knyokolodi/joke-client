@@ -7,7 +7,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import Loader from '../layouts/Loader';
 
-interface Props extends RouteComponentProps<{ category: string }> {}
+interface JokeProps extends RouteComponentProps<{ category: string }> {}
 
 const GET_RANDOM_JOKE = gql`
   query($category: String!) {
@@ -21,7 +21,7 @@ const GET_RANDOM_JOKE = gql`
   }
 `;
 
-const Joke: React.FC<Props> = ({ match }) => {
+const Joke: React.FC<JokeProps> = ({ match }) => {
   const { category } = match.params;
 
   const { loading, data } = useQuery(GET_RANDOM_JOKE, {

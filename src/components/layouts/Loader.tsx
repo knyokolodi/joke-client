@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
+interface LoaderProps {
   name: string;
 }
 
@@ -12,7 +12,7 @@ const LoaderWrapper = styled.div`
   text-align: center;
 `;
 
-const Loader: React.FC<Props> = ({ name }) => {
+const Loader: React.FC<LoaderProps> = ({ name }) => {
   return (
     <LoaderWrapper>
       <h3>{`Loading ${name}...`}</h3>
